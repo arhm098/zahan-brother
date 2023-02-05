@@ -1,0 +1,19 @@
+[
+    {
+        "Region": "us-east-1",
+        "Account Name": "regn-itcorp-a",
+        "Service Name": "ec2",
+        "VPC ID": "vpc-4bd2e730",
+        "Subnet ID": "subnet-2fb54e01",
+        "Security Group(s)": "['regn-cld-linux-mgmnt-access', 'AUSUOAORO1P', 'regn-corp-tools-integration-sg', 'regn-prometheus-sg']",
+        "Instance Type": "m5.12xlarge",
+        "State": "running",
+        "Platform": "Linux",
+        "Private IP": "172.17.17.4",
+        "Instance ID": "i-0cfa6950a8b847240",
+        "Name": "AUSUOAORO1P",
+        "TSM": "curt.hayes@regeneron.com",
+        "SysOwner": "john.goodhart@regeneron.com",
+        "SysName": "AWS oracle restore server"
+    }
+]
