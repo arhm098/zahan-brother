@@ -17,10 +17,14 @@ function App() {
   const handleIpAddressChange = (event) => {
     setIpAddress(event.target.value);
   };
-
+  const optionsAPIChange = {
+    'ec2' : 'ipaddress',
+    's3' : 'bucketname',
+    'rds' : 'rdsname',
+  }
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const res = await fetch(`https://lg51kak54k.execute-api.us-east-1.amazonaws.com/prod/${selectedOption}?ipaddress=${ipAddress}`);
+    const res = await fetch(`https://lg51kak54k.execute-api.us-east-1.amazonaws.com/prod/${selectedOption}?${optionsAPIChange[selectedOption]}=${ipAddress}`);
     const data = await res.json();
     setData(data[0]);
   };
@@ -39,7 +43,7 @@ function App() {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Enter IP Address"
+        placeholder={optionsAPIChange[selectedOption]}
         value={ipAddress}
         onChange={handleIpAddressChange}
       />
@@ -58,21 +62,21 @@ function App() {
       <label>
         <input
           type="radio"
-          value="option2"
-          checked={selectedOption === 'option2'}
+          value="s3"
+          checked={selectedOption === 's3'}
           onChange={handleOptionChange}
           />
-        Option 2
+        s3
       </label>
       <br />
       <label>
         <input
           type="radio"
-          value="option3"
-          checked={selectedOption === 'option3'}
+          value="rds"
+          checked={selectedOption === 'rds'}
           onChange={handleOptionChange}
         />
-        Option 3
+        rds
       </label>
       <br />
       <br />
