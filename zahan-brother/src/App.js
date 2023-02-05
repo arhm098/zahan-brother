@@ -18,9 +18,9 @@ function App() {
     setIpAddress(event.target.value);
   };
   const optionsAPIChange = {
-    'ec2' : 'ipaddress',
-    's3' : 'bucketname',
-    'rds' : 'rdsname',
+    'ec2': 'ipaddress',
+    's3': 'bucketname',
+    'rds': 'rdsname',
   }
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -39,118 +39,147 @@ function App() {
 
   return (
     <>
-    <div className='container'>
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder={optionsAPIChange[selectedOption]}
-        value={ipAddress}
-        onChange={handleIpAddressChange}
-      />
-      <div className='container'>
-
-       <label>
-        <input
-          type="radio"
-          value="ec2"
-          checked={selectedOption === 'ec2'}
-          onChange={handleOptionChange}
-          />
-        ec2
-      </label>
-      <br />
-      <label>
-        <input
-          type="radio"
-          value="s3"
-          checked={selectedOption === 's3'}
-          onChange={handleOptionChange}
-          />
-        s3
-      </label>
-      <br />
-      <label>
-        <input
-          type="radio"
-          value="rds"
-          checked={selectedOption === 'rds'}
-          onChange={handleOptionChange}
-        />
-        rds
-      </label>
-      <br />
-      <br />
-      Selected option: {selectedOption}
+      <nav>
+        <form onSubmit={handleSubmit}>
+          <div className="d-flex flex-row">
+          <div className='pe-2'>
+          <input
+              type="text"
+              placeholder={optionsAPIChange[selectedOption]}
+              value={ipAddress}
+              onChange={handleIpAddressChange}
+              />
           </div>
-      <button type="submit">Submit</button>
-    </form>
-    </div>
-      <div className='container t-5'>
-        <table>
-          <tr>
-            <th>Region</th>
-            <td>{data.Region}</td>
-          </tr>
-          <tr>
-            <th>Account Name</th>
-            <td>{data["Account Name"]}</td>
-          </tr>
-          <tr>
-            <th>Service Name</th>
-            <td>{data["Service Name"]}</td>
-          </tr>
-          <tr>
-            <th>VPC ID</th>
-            <td>{data["VPC ID"]}</td>
-          </tr>
-          <tr>
-            <th>Subnet ID</th>
-            <td>{data["Subnet ID"]}</td>
-          </tr>
-          <tr>
-            <th>Security Group(s)</th>
-            <td>{data["Security Group(s)"]}</td>
-          </tr>
-          <tr>
-            <th>Instance Type</th>
-            <td>{data["Instance Type"]}</td>
-          </tr>
-          <tr>
-            <th>State</th>
-            <td>{data.State}</td>
-          </tr>
-          <tr>
-            <th>Platform</th>
-            <td>{data.Platform}</td>
-          </tr>
-          <tr>
-            <th>Private IP</th>
-            <td>{data["Private IP"]}</td>
-          </tr>
-          <tr>
-            <th>Instance ID</th>
-            <td>{data["Instance ID"]}</td>
-          </tr>
-          <tr>
-            <th>Name</th>
-            <td>{data.Name}</td>
-          </tr>
-          <tr>
-            <th>TSM</th>
-            <td>{data.TSM}</td>
-          </tr>
-          <tr>
-            <th>SysOwner</th>
-            <td>{data["SysOwner"]}</td>
-          </tr>
-          <tr>
-            <th>SysName</th>
-            <td>{data["SysName"]}</td>
-          </tr>
+          <div className='form-group d-flex flex-row'>
+                  <div className="form-check pe-2">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="radioButtonGroup"
+                      id='ec2'
+                      value='ec2'
+                      checked={selectedOption === 'ec2'}
+                      onChange={handleOptionChange}
+                    />
+                    <label className="form-check-label">
+                      ec2
+                    </label>
+                  </div>
+                  <div className="form-check pe-2">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="radioButtonGroup"
+                      id='s3'
+                      value='s3'
+                      checked={selectedOption === 's3'}
+                      onChange={handleOptionChange}
+                    />
+                    <label className="form-check-label">
+                      s3
+                    </label>
+                  </div>
+                  <div className="form-check pe-2">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="radioButtonGroup"
+                      id='rds'
+                      value='rds'
+                      checked={selectedOption === 'rds'}
+                      onChange={handleOptionChange}
+                    />
+                    <label className="form-check-label">
+                      rds
+                    </label>
+                  </div>
+              </div>
+            </div>
+            <div className='p-1'>
+              <button type="submit" className='btn btn-primary'>Submit</button>
+            </div>
+        </form>
+        <ErrorHandle data={data} />
+      </nav>
+      <div className='bg-light'>
+        <table className='table'>
+          <tbody>
+            <tr>
+              <th>Region</th>
+              <td>{data.Region}</td>
+            </tr>
+            <tr>
+              <th>Account Name</th>
+              <td>{data["Account Name"]}</td>
+            </tr>
+            <tr>
+              <th>Service Name</th>
+              <td>{data["Service Name"]}</td>
+            </tr>
+            <tr>
+              <th>VPC ID</th>
+              <td>{data["VPC ID"]}</td>
+            </tr>
+            <tr>
+              <th>Subnet ID</th>
+              <td>{data["Subnet ID"]}</td>
+            </tr>
+            <tr>
+              <th>Security Group(s)</th>
+              <td>{data["Security Group(s)"]}</td>
+            </tr>
+            <tr>
+              <th>Instance Type</th>
+              <td>{data["Instance Type"]}</td>
+            </tr>
+            <tr>
+              <th>State</th>
+              <td>{data.State}</td>
+            </tr>
+            <tr>
+              <th>Platform</th>
+              <td>{data.Platform}</td>
+            </tr>
+            <tr>
+              <th>Private IP</th>
+              <td>{data["Private IP"]}</td>
+            </tr>
+            <tr>
+              <th>Instance ID</th>
+              <td>{data["Instance ID"]}</td>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <td>{data.Name}</td>
+            </tr>
+            <tr>
+              <th>TSM</th>
+              <td>{data.TSM}</td>
+            </tr>
+            <tr>
+              <th>SysOwner</th>
+              <td>{data["SysOwner"]}</td>
+            </tr>
+            <tr>
+              <th>SysName</th>
+              <td>{data["SysName"]}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </>
   );
 }
-  
+function ErrorHandle(props) {
+  if (props.data['error message'] === '') {
+    return (<>user found</>)
+  }
+  else {
+    return (<>
+      <h2>
+        {props.data['error message']}
+      </h2>
+    </>)
+  }
+}
 export default App;
