@@ -102,6 +102,9 @@ function App() {
         <ErrorHandle data={data} />
       </nav>
       <div className='bg-light'>
+        <div className='p-1 bg-light border'>
+          <h4>INFORMATION</h4>
+        </div>
         <table className='table'>
           <tbody>
             <tr>
